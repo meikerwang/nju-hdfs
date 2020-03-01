@@ -1,0 +1,26 @@
+# Spring properties
+spring:
+  application:
+    name: namenode-service  # Service registers under this name
+
+# HTTP Server
+server:
+  port: 10086   # HTTP (Tomcat) port
+
+# Discovery Server Access
+#  1. DEV ONLY: Reduce the lease renewal interval to speed up registration
+#  2. Define URL of registration server (defaultZone)
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10086/eureka/
+    registry-fetch-interval-seconds: 5
+  server:
+    # 关闭自我保护 由于Eureka拥有自我保护机制:
+    # 当其注册表里服务因为网络或其他原因出现故障而关停时，Eureka不会剔除服务注册，而是等待其修复
+    # 我们可以采取关闭此功能，让其剔除不健康节点，从而导致执行EurekaInstanceCanceledEvent事件
+    enable-self-preservation: false
+    #  检测间隔（单位毫秒，默认是1分钟）
+    evictionIntervalTimerInMs: 10000

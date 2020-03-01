@@ -1,0 +1,38 @@
+# Spring properties
+spring:
+  application:
+    name: datanode-service  # Service registers under this name
+    properties:
+      debug: true
+  datasource:
+    url: jdbc:mysql:///test?useSSL=false
+    username: root
+    password: wangzhi
+
+
+# Map the error path to error template (for Thymeleaf)
+#error.path: /error
+
+server:
+  port: 8082   # HTTP (Tomcat) port
+
+# Discovery Server Access
+#  1. DEV ONLY: Reduce the lease renewal interval to speed up registration
+#  2. Define URL of registration server (defaultZone)
+eureka:
+  instance:
+    hostname: localhost
+    #\u79DF\u671F\u66F4\u65B0\u65F6\u95F4\u95F4\u9694 \uFF08\u5355\u4F4D\u79D2\uFF0C\u9ED8\u8BA430\u79D2\uFF09
+    lease-renewal-interval-in-seconds: 15
+    #\u79DF\u671F\u5230\u671F\u65F6\u95F4 \uFF08\u5355\u4F4D\u79D2\uFF0C\u9ED8\u8BA490\u79D2\uFF09
+    lease-expiration-duration-in-seconds: 60
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10086/eureka/
+    registry-fetch-interval-seconds: 10
+    healthcheck: enabled
+
+
+
+
+
