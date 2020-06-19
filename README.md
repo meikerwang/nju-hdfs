@@ -1,6 +1,7 @@
 # 微服务架构的分布式文件系统设计与实现
 
 https://github.com/njuics/sa-2018/wiki/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A
+https://github.com/njuics/sa-2019/wiki/Final-Project
 
 - 基于Spring Boot实现NameNode和DataNode两个服务
 - 在Spring Cloud微服务平台上运行一个NameNode实例和多个DataNode实例（无需考虑NameNode单点失效问题）
